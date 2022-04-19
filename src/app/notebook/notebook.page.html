@@ -1,20 +1,56 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>notebook</ion-title>
+    <ion-title>{{ title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  {{ title }}
-  
+  <ion-list lines="full">
+    <form [formGroup]="editForm" (ngSubmit)="saveForm()">
+      <ion-item>
+        <ion-label position="floating">Notebook Title</ion-label>
+        <ion-input formControlName="notebook_title" type="text" required></ion-input>
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="primary" shape="full" expand="block">
+            Update Notebook Title
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-list>
+  <ion-list lines="full">
+    <form [formGroup]="mainForm" (ngSubmit)="storeData()">
+      <ion-item>
+        <ion-label position="floating">Note title</ion-label>
+        <ion-input formControlName="note_title" type="text" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Note text</ion-label>
+        <ion-input formControlName="note_text" type="text" required></ion-input>
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="primary" shape="full" expand="block">
+            Add Note
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-list>
   <ion-list>
     <ion-list-header>
-      Notes
+      Notes in {{ title }}
     </ion-list-header>
     <ion-item lines="inset" *ngFor="let note of noteList">
       <ion-label>
         <h5>{{note.note_title}}</h5>
       </ion-label>
+      <div class="item-note" item-end>
+        <ion-icon name="create" style="zoom:2.0" [routerLink]="['/note/', note.id]"></ion-icon>        
+        <ion-icon name="trash" style="zoom:2.0" (click)="deleteNote(note.id)"></ion-icon>
+      </div>
     </ion-item>
   </ion-list>
 </ion-content>

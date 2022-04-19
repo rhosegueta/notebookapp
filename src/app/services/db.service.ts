@@ -48,19 +48,6 @@ export class DbService {
       .catch(err => {
         this.getFakeData();
       });
-
-      this.storage.executeSql("SELECT name FROM sqlite_master WHERE type='table' AND name='notetable';", [])
-      .then(res => {
-        if(res.rows.length > 0){
-          this.getNotes();
-          this.isDbReady.next(true);
-        }else{
-          this.getFakeData();
-        }
-      })
-      .catch(err => {
-        this.getFakeData();
-      })
     });
   }
 
@@ -83,7 +70,6 @@ export class DbService {
       this.sqlPorter.importSqlToDb(this.storage, data)
       .then(_ => {
         this.getNotebooks();
-        this.getNotes();
         this.isDbReady.next(true);
       }).catch(error => {
         console.error(error);
@@ -109,8 +95,8 @@ export class DbService {
     });
   }
 
-  getNotes(){
-    return this.storage.executeSql('SELECT * FROM notetable', [])
+  getNotes(id){
+    return this.storage.executeSql('SELECT * FROM notetable WHERE notebook_id=?', [id])
     .then(res => {
       let items: Note[] = [];
       if(res.rows.length > 0){
@@ -143,7 +129,7 @@ export class DbService {
     return this.storage.executeSql(
       'INSERT INTO notetable(note_title, note_text, notebook_id) VALUES (?, ?, ?)', data
     ).then(res => {
-      this.getNotes();
+      this.getNotes(notebook_id);
     });
   }
 
@@ -161,7 +147,7 @@ export class DbService {
       `UPDATE notetable SET note_title=?, note_text=?, notebook_id=? WHERE id=${id}`,
       [note.note_title, note.note_text, note.notebook_id]
     ).then(data => {
-      this.getNotes();
+      this.getNotes(note.notebook_id);
     });
   }
 
@@ -172,10 +158,10 @@ export class DbService {
     });
   }
 
-  deleteNote(id){
+  deleteNote(id, notebook_id){
     return this.storage.executeSql('DELETE FROM notetable WHERE id=?', [id])
     .then(_=>{
-      this.getNotes();
+      this.getNotes(notebook_id);
     });
   }
 
@@ -201,7 +187,7 @@ export class DbService {
     });
   }
 
-  getNotesByNotebookId(id): Promise<Note[]>{
+  getNoteByNotebookId(id): Promise<Note[]>{
     return this.storage.executeSql('SELECT * FROM notetable WHERE notebook_id=?', [id])
     .then(res=>{
       let items: Note[] = [];
@@ -220,4 +206,5 @@ export class DbService {
       return items;
     });
   }
+
 }
