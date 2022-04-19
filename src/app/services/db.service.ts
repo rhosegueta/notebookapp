@@ -142,10 +142,10 @@ export class DbService {
     });
   }
 
-  updateNote(id, note:Note){
+  updateNote(id, note:Note, notebook_id){
     return this.storage.executeSql(
       `UPDATE notetable SET note_title=?, note_text=?, notebook_id=? WHERE id=${id}`,
-      [note.note_title, note.note_text, note.notebook_id]
+      [note.note_title, note.note_text, notebook_id]
     ).then(data => {
       this.getNotes(note.notebook_id);
     });

@@ -15,6 +15,7 @@ export class NotebookPage implements OnInit {
   editForm: FormGroup;
   mainForm: FormGroup;
   noteList: any[] = [];
+  title: any;
 
   constructor(
     private db: DbService,
@@ -28,6 +29,7 @@ export class NotebookPage implements OnInit {
       this.editForm.setValue({
         notebook_title: res['notebook_title']
       });
+      this.title = res['notebook_title']
     });
     this.db.getNoteByNotebookId(this.id).then(res => {
       this.noteList = res;

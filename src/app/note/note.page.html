@@ -1,9 +1,27 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>note</ion-title>
+    <ion-title>{{ note_title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-list lines="full">
+    <form [formGroup]="editForm" (ngSubmit)="saveForm()">
+      <ion-item>
+        <ion-label position="floating">Note Title</ion-label>
+        <ion-input formControlName="note_title" type="text" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Note Text</ion-label>
+        <ion-input formControlName="note_text" type="text" required></ion-input>
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="primary" shape="full" expand="block">
+            Update Note
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-list>
 </ion-content>
