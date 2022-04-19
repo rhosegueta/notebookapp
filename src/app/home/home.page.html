@@ -31,9 +31,18 @@
         <h5>{{data.notebook_title}}</h5>
       </ion-label>
       <div class="item-note" item-end>
-        <ion-icon name="create" style="zoom:2.0" [routerLink]="['/notebook/', data.id]"></ion-icon>        
+        <ion-icon name="create" style="zoom:2.0" [routerLink]="['/notebook/', data.id]"></ion-icon>
         <ion-icon name="trash" style="zoom:2.0" (click)="deleteNotebook(data.id)"></ion-icon>
       </div>
     </ion-item>
   </ion-list>
+
+  <ion-button (click)="enableDark()" expand="full">
+    Dark Mode
+  </ion-button>
+
+  <ion-button (click)="enableLight()" expand="full">
+    Light Mode
+  </ion-button>
+
 </ion-content>

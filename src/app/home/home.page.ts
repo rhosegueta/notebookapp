@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { DbService } from '../services/db.service';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import {ThemeService} from '../services/theme.service';
 
 @Component({
   selector: 'app-home',
@@ -12,14 +13,23 @@ import { Router } from '@angular/router';
 export class HomePage implements OnInit{
 
   mainForm: FormGroup;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   Data: any[] = [];
 
   constructor(
     private db: DbService,
     public formBuilder: FormBuilder,
     private toast: ToastController,
-    private router: Router
+    private router: Router,
+    private theme: ThemeService
   ) {}
+
+  enableDark(){
+    this.theme.enableDark();
+  }
+  enableLight(){
+    this.theme.enableLight();
+  }
 
   ngOnInit(){
     this.db.dbState().subscribe(
@@ -27,14 +37,14 @@ export class HomePage implements OnInit{
         if(res){
           this.db.fetchNotebooks().subscribe(async item => {
             this.Data = item;
-            let toast = await this.toast.create({
+            const toast = await this.toast.create({
               message: 'notebook table loaded',
               duration: 2500
             });
             toast.present();
-          })
+          });
         }else{
-          let toast = await this.toast.create({
+          const toast = await this.toast.create({
             message: 'Res is empty',
             duration: 2500
           });
@@ -43,13 +53,14 @@ export class HomePage implements OnInit{
       }
     );
     this.mainForm = this.formBuilder.group({
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       notebook_title:['']
     });
   }
 
   storeData(){
     this.db.dbState().subscribe(async res=> {
-      let toast = await this.toast.create({
+      const toast = await this.toast.create({
         message: `DB state: ${res}`,
         duration: 2500
       });
@@ -72,7 +83,7 @@ export class HomePage implements OnInit{
     ).then((res) => {
       this.mainForm.reset();
     }).catch(async error => {
-      let toast = await this.toast.create({
+      const toast = await this.toast.create({
         message: `error: ${error}`,
         duration: 2500
       });
@@ -82,7 +93,7 @@ export class HomePage implements OnInit{
 
   deleteNotebook(id){
     this.db.deleteNotebook(id).then(async(res)=>{
-      let toast = await this.toast.create({
+      const toast = await this.toast.create({
         message: 'Notebook deleted',
         duration: 2500
       });
