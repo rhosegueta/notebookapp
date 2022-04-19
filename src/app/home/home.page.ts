@@ -4,6 +4,7 @@ import { DbService } from '../services/db.service';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import {ThemeService} from '../services/theme.service';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,11 @@ import {ThemeService} from '../services/theme.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit{
+  items = [
+    {text: 'My first green item', color: '#00ff00'},
+    {text: 'My second red item', color: '#ff0000'},
+    {text: 'My third blue item', color: '#0000ff'}
+  ];
 
   mainForm: FormGroup;
   // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -21,7 +27,8 @@ export class HomePage implements OnInit{
     public formBuilder: FormBuilder,
     private toast: ToastController,
     private router: Router,
-    private theme: ThemeService
+    private theme: ThemeService,
+    private sanitizer: DomSanitizer
   ) {}
 
   enableDark(){
@@ -29,6 +36,9 @@ export class HomePage implements OnInit{
   }
   enableLight(){
     this.theme.enableLight();
+  }
+  getDynamicColor(color) {
+    return this.sanitizer.bypassSecurityTrustStyle(`--myvar: ${color}`);
   }
 
   ngOnInit(){
@@ -67,10 +77,11 @@ export class HomePage implements OnInit{
       toast.present();
       if(res){}
       else{
-        this.db.init().then(res => {
+        this.db.init().then(() => {
 
         }).catch(async error => {
-          let toast = await this.toast.create({
+          // eslint-disable-next-line @typescript-eslint/no-shadow
+          const toast = await this.toast.create({
             message: `error: ${error}`,
             duration: 2500
           });
@@ -92,7 +103,7 @@ export class HomePage implements OnInit{
   }
 
   deleteNotebook(id){
-    this.db.deleteNotebook(id).then(async(res)=>{
+    this.db.deleteNotebook(id).then(async (res)=>{
       const toast = await this.toast.create({
         message: 'Notebook deleted',
         duration: 2500

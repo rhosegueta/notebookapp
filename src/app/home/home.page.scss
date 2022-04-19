@@ -7,6 +7,10 @@
   transform: translateY(-50%);
 }
 
+.dynamic-item {
+  --background: var(--myvar);
+}
+
 #container strong {
   font-size: 20px;
   line-height: 26px;
