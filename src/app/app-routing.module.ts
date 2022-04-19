@@ -11,6 +11,14 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'notebook/:id',
+    loadChildren: () => import('./notebook/notebook.module').then( m => m.NotebookPageModule)
+  },
+  {
+    path: 'note/:id',
+    loadChildren: () => import('./note/note.module').then( m => m.NotePageModule)
+  },
 ];
 
 @NgModule({
