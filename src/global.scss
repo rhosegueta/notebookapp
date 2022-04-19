@@ -24,3 +24,46 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+:root {
+  .dark-theme {
+    --ion-color-primary: #eb4b58;
+    --ion-color-primary-rgb: 235, 75, 88;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb: 255, 255, 255;
+    --ion-color-primary-shade: #cf424d;
+    --ion-color-primary-tint: #ed5d69;
+
+
+    ion-content {
+      --background: #2c4b84;
+    }
+
+    ion-toolbar {
+      --background: #2c4b84;
+      --color: #fff;
+    }
+
+    ion-list {
+      --ion-item-background: #2c4b84;
+      --ion-item-color: #fff;
+
+      ion-list-header {
+        --color: #fff;
+      }
+    }
+
+    ion-card {
+      --color: #fff;
+
+      ion-card-title {
+        --color: #fff;
+      }
+    }
+
+    ion-tab-bar {
+      --background: #0f2142;
+      --color: #fff;
+    }
+  }
+}
