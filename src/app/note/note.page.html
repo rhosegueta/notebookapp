@@ -6,6 +6,14 @@
 
 <ion-content>
   <ion-list lines="full">
+     
+    <!-- Back Button here! -Yukina -->
+    <ion-item class="back-btn">
+      <ion-button expand="block" fill="outline">
+        <fa-icon class="custom-icon" icon="angle-left"></fa-icon>Back
+      </ion-button>
+    </ion-item>
+
     <form [formGroup]="editForm" (ngSubmit)="saveForm()">
       <ion-item>
         <ion-label position="floating">Note Title</ion-label>

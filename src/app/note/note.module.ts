@@ -8,12 +8,15 @@ import { NotePageRoutingModule } from './note-routing.module';
 
 import { NotePage } from './note.page';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
+    FontAwesomeModule,
     NotePageRoutingModule
   ],
   declarations: [NotePage]

@@ -37,13 +37,15 @@
     </ion-item>
   </ion-list>
 
-  <ion-button (click)="enableDark()" expand="full">
-    Dark Mode
-  </ion-button>
+  <ion-item class="modes">
+    <ion-button (click)="enableLight()" expand="block">
+      <fa-icon icon="sun"></fa-icon>
+    </ion-button>
+    <ion-button (click)="enableDark()" expand="block">
+      <fa-icon icon="moon"></fa-icon>
+    </ion-button>
+  </ion-item>
 
-  <ion-button (click)="enableLight()" expand="full">
-    Light Mode
-  </ion-button>
 
   <!--  Testing variable components - Use this as a guide
   <ion-list>

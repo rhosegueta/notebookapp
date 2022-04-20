@@ -26,3 +26,26 @@
 #container a {
   text-decoration: none;
 }
+
+.modes{
+  position:absolute;
+  width: 100%;
+  bottom: 10px;
+}
+
+.modes ion-button{
+  width: 50%;
+  height: 5vh;
+}
+
+.custom-icon{
+  padding-right: 5px;
+}
+
+.back-btn{
+  width: 100%;
+}
+
+.back-btn ion-button{
+  width: 100%;
+}

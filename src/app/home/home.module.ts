@@ -6,6 +6,9 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+
+
 
 @NgModule({
   imports: [
@@ -13,6 +16,7 @@ import { HomePageRoutingModule } from './home-routing.module';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
+    FontAwesomeModule,
     HomePageRoutingModule
   ],
   declarations: [HomePage]
