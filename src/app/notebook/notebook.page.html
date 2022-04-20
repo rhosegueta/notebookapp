@@ -21,7 +21,7 @@
       </ion-item>
       <ion-row>
         <ion-col>
-          <ion-button type="submit" color="primary" shape="block" expand="block">
+          <ion-button type="submit" color="secondary" shape="block" expand="block">
             Update Folder Title
           </ion-button>
         </ion-col>
@@ -48,7 +48,7 @@
     </form>
   </ion-list>
   <ion-list>
-    <ion-list-header>
+    <ion-list-header class="h2">
       Notes in {{ title }}
     </ion-list-header>
     <ion-item lines="inset" *ngFor="let note of noteList">
@@ -56,7 +56,7 @@
         <h5>{{note.note_title}}</h5>
       </ion-label>
       <div class="item-note" item-end>
-        <ion-icon name="create" style="zoom:1.5" [routerLink]="['/note/', note.id]"></ion-icon>        
+        <ion-icon class="mr5" name="create" style="zoom:1.5" [routerLink]="['/note/', note.id]"></ion-icon>        
         <ion-icon name="trash" style="zoom:1.5" (click)="deleteNote(note.id)"></ion-icon>
       </div>
     </ion-item>
