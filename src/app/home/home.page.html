@@ -10,13 +10,13 @@
   <ion-list lines="full">
     <form [formGroup]="mainForm" (ngSubmit)="storeData()">
       <ion-item>
-        <ion-label position="floating">Notebook title</ion-label>
+        <ion-label class="placeholder" position="floating">Folder title...</ion-label>
         <ion-input formControlName="notebook_title" type="text" required></ion-input>
       </ion-item>
       <ion-row>
         <ion-col>
           <ion-button type="submit" color="primary" shape="block" expand="block">
-            Add Notebook
+            <fa-icon class="custom-icon" icon="plus"></fa-icon> Add Folder
           </ion-button>
         </ion-col>
       </ion-row>
@@ -24,7 +24,7 @@
   </ion-list>
   <ion-list>
     <ion-list-header>
-      Notebooks
+      Folders
     </ion-list-header>
     <ion-item lines="inset" *ngFor="let data of Data">
       <ion-label>

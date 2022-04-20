@@ -16,11 +16,11 @@
 
     <form [formGroup]="editForm" (ngSubmit)="saveForm()">
       <ion-item>
-        <ion-label position="floating">Note Title</ion-label>
+        <ion-label class="placeholder" position="floating">Note Title...</ion-label>
         <ion-input formControlName="note_title" type="text" required></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Note Text</ion-label>
+        <ion-label class="placeholder" position="floating">Note Text...</ion-label>
         <ion-input formControlName="note_text" type="text" required></ion-input>
       </ion-item>
       <ion-row>

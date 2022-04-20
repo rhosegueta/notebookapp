@@ -16,13 +16,13 @@
 
     <form [formGroup]="editForm" (ngSubmit)="saveForm()">
       <ion-item>
-        <ion-label position="floating">Notebook Title</ion-label>
+        <ion-label class="placeholder" position="floating">Folder Title...</ion-label>
         <ion-input formControlName="notebook_title" type="text" required></ion-input>
       </ion-item>
       <ion-row>
         <ion-col>
           <ion-button type="submit" color="primary" shape="block" expand="block">
-            Update Notebook Title
+            Update Folder Title
           </ion-button>
         </ion-col>
       </ion-row>
@@ -31,11 +31,11 @@
   <ion-list lines="full">
     <form [formGroup]="mainForm" (ngSubmit)="storeData()">
       <ion-item>
-        <ion-label position="floating">Note title</ion-label>
+        <ion-label class="placeholder" position="floating">Note title...</ion-label>
         <ion-input formControlName="note_title" type="text" required></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Note text</ion-label>
+        <ion-label class="placeholder" position="floating">Note text...</ion-label>
         <ion-input formControlName="note_text" type="text" required></ion-input>
       </ion-item>
       <ion-row>
