@@ -1,5 +1,11 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar class="modes">
+    <ion-button size="small" color="medium" (click)="enableLight()">
+      <fa-icon icon="sun"></fa-icon>
+    </ion-button>
+    <ion-button size="small" color="medium" (click)="enableDark()">
+      <fa-icon icon="moon"></fa-icon>
+    </ion-button>
     <ion-title>
       Notebooks
     </ion-title>
@@ -7,22 +13,26 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-list lines="full">
+  <ion-list lines="full" class="mt20">
     <form [formGroup]="mainForm" (ngSubmit)="storeData()">
-      <ion-item>
+      <ion-item class="btn-position">
         <ion-label class="placeholder" position="floating">Folder title...</ion-label>
         <ion-input formControlName="notebook_title" type="text" required></ion-input>
+        <ion-button class="add" type="submit" color="primary" shape="undefined" expand="block">
+          <fa-icon class="add-icon" icon="plus"></fa-icon>
+        </ion-button>
       </ion-item>
-      <ion-row>
+      <!-- <ion-row>
         <ion-col>
           <ion-button type="submit" color="primary" shape="block" expand="block">
             <fa-icon class="custom-icon" icon="plus"></fa-icon> Add Folder
           </ion-button>
         </ion-col>
-      </ion-row>
+      </ion-row> -->
     </form>
   </ion-list>
-  <ion-list>
+
+  <ion-list class="mt20 mb20">
     <ion-list-header>
       Folders
     </ion-list-header>
@@ -31,21 +41,11 @@
         <h5>{{data.notebook_title}}</h5>
       </ion-label>
       <div class="item-note" item-end>
-        <ion-icon name="create" style="zoom:2.0" [routerLink]="['/notebook/', data.id]"></ion-icon>
-        <ion-icon name="trash" style="zoom:2.0" (click)="deleteNotebook(data.id)"></ion-icon>
+        <ion-icon name="create" style="zoom:1.5" [routerLink]="['/notebook/', data.id]"></ion-icon>
+        <ion-icon name="trash" style="zoom:1.5" (click)="deleteNotebook(data.id)"></ion-icon>
       </div>
     </ion-item>
   </ion-list>
-
-  <ion-item class="modes">
-    <ion-button (click)="enableLight()" expand="block">
-      <fa-icon icon="sun"></fa-icon>
-    </ion-button>
-    <ion-button (click)="enableDark()" expand="block">
-      <fa-icon icon="moon"></fa-icon>
-    </ion-button>
-  </ion-item>
-
 
   <!--  Testing variable components - Use this as a guide
   <ion-list>
