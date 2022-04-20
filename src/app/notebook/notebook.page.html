@@ -15,17 +15,20 @@
     </ion-item>
 
     <form [formGroup]="editForm" (ngSubmit)="saveForm()">
-      <ion-item>
+      <ion-item class="btn-position">
         <ion-label class="placeholder" position="floating">Folder Title...</ion-label>
         <ion-input formControlName="notebook_title" type="text" required></ion-input>
+        <ion-button class="add" type="submit" color="secondary" shape="block" expand="block">
+          Update
+        </ion-button>
       </ion-item>
-      <ion-row>
+      <!-- <ion-row>
         <ion-col>
           <ion-button type="submit" color="secondary" shape="block" expand="block">
             Update Folder Title
           </ion-button>
         </ion-col>
-      </ion-row>
+      </ion-row> -->
     </form>
   </ion-list>
   <ion-list lines="full">

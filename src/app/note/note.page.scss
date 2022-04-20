@@ -1,33 +1,51 @@
-.custom-icon{
-    padding-right: 5px;
-}
-  
-.back-btn{
-    width: 100%;
-}
-
-.back-btn ion-button{
-    width: 100%;
-}
-
-.placeholder{
-    color: #9d9fa6;
-}
-
-.mt20{
-    margin-top: 20px;
-}
-  
-.mb20{
-    margin-bottom: 20px;
-}
-  
-.mr5{
-    margin-right: 5px;
-}
 
 .h2{
     color: #3880ff;
     font-size: 18px;
     font-weight: bold;
-}
+  }
+  
+  .custom-icon{
+    padding-right: 5px;
+  }
+  
+  .back-btn{
+    width: 100%;
+  }
+  
+  .back-btn ion-button{
+    width: 100%;
+  }
+  
+  .placeholder{
+    color: #9d9fa6;
+  }
+  
+  .btn-position{
+    position: relative;
+  }
+  
+  .add{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 30px;
+    z-index: 10;
+    margin-bottom: 5px;
+  }
+  
+  .add-icon{
+    padding: 15px;
+  }
+  
+  .mt20{
+    margin-top: 20px;
+  }
+  
+  .mb20{
+    margin-bottom: 20px;
+  }
+  
+  .mr5{
+    margin-right: 5px;
+  }
