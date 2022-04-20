@@ -27,25 +27,32 @@
 
 :root {
   .dark-theme {
-    --ion-color-primary: #eb4b58;
-    --ion-color-primary-rgb: 235, 75, 88;
+    --ion-color-primary: #9e68bb;
+    --ion-color-primary-rgb: 158,104,187;
     --ion-color-primary-contrast: #ffffff;
     --ion-color-primary-contrast-rgb: 255, 255, 255;
-    --ion-color-primary-shade: #cf424d;
-    --ion-color-primary-tint: #ed5d69;
+    --ion-color-primary-shade: #8b5ca5;
+    --ion-color-primary-tint: #a877c2;
+
+    --ion-color-secondary: #d3a9ea;
+    --ion-color-secondary-rgb: 211,169,234;
+    --ion-color-secondary-contrast: #ffffff;
+    --ion-color-secondary-contrast-rgb: 255, 255, 255;
+    --ion-color-secondary-shade: #ba95ce;
+    --ion-color-secondary-tint: #d7b2ec;
 
 
     ion-content {
-      --background: #2c4b84;
+      --background: #333a46;
     }
 
     ion-toolbar {
-      --background: #2c4b84;
+      --background: #333a46;
       --color: #fff;
     }
 
     ion-list {
-      --ion-item-background: #2c4b84;
+      --ion-item-background: #333a46;
       --ion-item-color: #fff;
 
       ion-list-header {
@@ -62,8 +69,12 @@
     }
 
     ion-tab-bar {
-      --background: #0f2142;
+      --background: #333a46;
       --color: #fff;
+    }
+
+    .h2{
+      color: #9e68bb;
     }
   }
 }
