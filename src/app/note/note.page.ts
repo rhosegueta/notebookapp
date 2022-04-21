@@ -47,7 +47,6 @@ export class NotePage implements OnInit {
     this.db.updateNote(this.id, this.editForm.value, this.notebook_id)
     .then((res) => {
       console.log(res)
-      this.router.navigate(['/notebook/', this.notebook_id])
     })
   }
 

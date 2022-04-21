@@ -147,7 +147,7 @@ export class DbService {
       `UPDATE notetable SET note_title=?, note_text=?, notebook_id=? WHERE id=${id}`,
       [note.note_title, note.note_text, notebook_id]
     ).then(data => {
-      this.getNotes(note.notebook_id);
+      this.getNotes(notebook_id);
     });
   }
 

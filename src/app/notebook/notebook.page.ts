@@ -24,6 +24,9 @@ export class NotebookPage implements OnInit {
     private activeRoute: ActivatedRoute,
     private toast: ToastController
   ) { 
+  }
+
+  ngOnInit() {
     this.id = this.activeRoute.snapshot.paramMap.get('id');
     this.db.getNotebook(this.id).then(res => {
       this.editForm.setValue({
@@ -31,12 +34,6 @@ export class NotebookPage implements OnInit {
       });
       this.title = res['notebook_title']
     });
-    this.db.getNoteByNotebookId(this.id).then(res => {
-      this.noteList = res;
-    })
-  }
-
-  ngOnInit() {
     this.db.dbState().subscribe(
       async (res) => {
         if(res){
@@ -64,14 +61,21 @@ export class NotebookPage implements OnInit {
       note_title:[''],
       note_text:['']
     });
+    this.db.getNoteByNotebookId(this.id).then(res => {
+      this.noteList = res;
+    })
   }
 
   saveForm(){
     this.db.updateNotebook(this.id, this.editForm.value)
     .then((res) => {
       console.log(res)
-      this.router.navigate(['/home']);
+      
     })
+  }
+
+  goToHome(){
+    this.router.navigate(['/home']);
   }
 
   storeData(){
